@@ -74,20 +74,20 @@ function contract_pcmrbf_samefig
     plot(s,Vbound,'g--','linewidth',1)
     
     xlim([0,4])
-    xlabel('$S$','Interpreter','latex')
-    ylabel('$P$','Interpreter','latex')
-    title('Option price at $t=0$ in Example 1','Interpreter','latex')
-    legend({'FDPCM--$P_{1}(S,0)$','FDPCM--$P_{2}(S,0)$','RBF--$P_{1}(S,0)$','RBF--$P_{2}(S,0)$',...
-        '$\max\{K-S,0\}$'},'Interpreter','latex')
+    xlabel('$S$','Interpreter','latex','FontSize',16)
+    ylabel('$P$','Interpreter','latex','FontSize',16)
+    title('Option price at $t=0$ in Example 1','Interpreter','latex','FontSize',22)
+    legend({'FDPCM--$P_{1}(S,0)$','FDPCM--$P_{2}(S,0)$','RBCM--$P_{1}(S,0)$','RBCM--$P_{2}(S,0)$',...
+        '$\max\{K-S,0\}$'},'Interpreter','latex','FontSize',12)
 
     % 红色矩形框
-    rectangle('Position',[smin 0.01 smax-smin 0.17], 'EdgeColor', 'r')
+    rectangle('Position',[smin 0.01 smax-smin-0.2 0.17], 'EdgeColor', 'r')
     hold on
 
     % 子图像
-    H = axes('Position',[0.35,0.42,0.28,0.25]); % 生成子图
+    H = axes('Position',[0.35,0.42,0.26,0.25]); % 生成子图
     plot(x_sub,yrbf1_sub,'m-',x_sub,yrbf2_sub,'c-',x1_sub,ypcm1_sub,'ro',x1_sub,ypcm2_sub,'bo');                % 绘制局部曲线图
-    xlim([min(x_sub),max(x_sub)]);    % 设置坐标轴范围    
+    xlim([min(x_sub),max(x_sub)-0.2]);    % 设置坐标轴范围    
     set(H, 'XTick',[], 'YTick', []);
 
     
@@ -165,21 +165,22 @@ function contract_pcmrbf_samefig
     hold on
     plot(s,Vbound,'g--','linewidth',1)
 
+   
     xlim([0,4])
-    xlabel('$S$','Interpreter','latex')
-    ylabel('$P$','Interpreter','latex')
-    title('Option price at $t=0$ in Example 2','Interpreter','latex')
-    legend({'FDPCM--$P_{1}(S,0)$','FDPCM--$P_{2}(S,0)$','RBF--$P_{1}(S,0)$','RBF--$P_{2}(S,0)$',...
-        '$\max\{K-S,0\}$'},'Interpreter','latex')
+    xlabel('$S$','Interpreter','latex','FontSize',16)
+    ylabel('$P$','Interpreter','latex','FontSize',16)
+    title('Option price at $t=0$ in Example 2','Interpreter','latex','FontSize',22)
+    legend({'FDPCM--$P_{1}(S,0)$','FDPCM--$P_{2}(S,0)$','RBCM--$P_{1}(S,0)$','RBCM--$P_{2}(S,0)$',...
+        '$\max\{K-S,0\}$'},'Interpreter','latex','FontSize',12)
 
     % 红色矩形框
-    rectangle('Position',[smin 0.01 smax-smin 0.19], 'EdgeColor', 'r')
+    rectangle('Position',[smin 0.01 smax-smin-0.1 0.19], 'EdgeColor', 'r')
     hold on
 
     % 子图像
     H = axes('Position',[0.35,0.42,0.28,0.25]); % 生成子图
     plot(x_sub,yrbf1_sub,'m-',x_sub,yrbf2_sub,'c-',x1_sub,ypcm1_sub,'ro',x1_sub,ypcm2_sub,'bo');                % 绘制局部曲线图
-    xlim([min(x_sub),max(x_sub)]);    % 设置坐标轴范围    
+    xlim([min(x_sub),max(x_sub)-0.1]);    % 设置坐标轴范围    
     set(H, 'XTick',[], 'YTick', []);
 
 

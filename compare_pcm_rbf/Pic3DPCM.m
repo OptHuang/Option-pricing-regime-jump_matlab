@@ -28,29 +28,32 @@ function Pic3DPCM
     V1true(:,2:end) = Vtrue1;
     V2true(:,2:end) = Vtrue2;
 
-    subplot(1,2,1)
-    mesh(S,M,V1true)
-    hold on
-    plot3(K-fb1,t,fb1,'k-','LineWidth',3)
-    %hold on
-    %plot3(K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
-    axis([0 7.5 0 1 0 1])
-    xlabel('$S$','Interpreter','latex')
-    ylabel('$t$','Interpreter','latex')
-    zlabel('$P$','Interpreter','latex')
-    title('Option price under regime 1 in Example 1','Interpreter','latex')
+%     subplot(1,1,1)
+%     mesh(S,M,V1true)
+%     hold on
+%     plot3(K-fb1,t,fb1,'k-','LineWidth',3)
+%     %hold on
+%     %plot3(K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
+%     axis([0 7.5 0 1 0 1])
+%     xlabel('$S$','Interpreter','latex','FontSize',16)
+%     ylabel('$t$','Interpreter','latex','FontSize',16)
+%     zlabel('$P$','Interpreter','latex','FontSize',16)
+%     title('Option price under regime 1 in Example 1','Interpreter','latex','FontSize',22)
+%     set(gcf,'position',[10,5,560,420])
     
-    subplot(1,2,2)
+    
+    subplot(1,1,1)
     mesh(S,M,V2true)
     hold on
     plot3(K-fb2,t,fb2,'k-','LineWidth',3)
     %hold on
     %plot3(K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
     axis([0 7.5 0 1 0 1])
-    xlabel('$S$','Interpreter','latex')
-    ylabel('$t$','Interpreter','latex')
-    zlabel('$P$','Interpreter','latex')
-    title('Option price under regime 2 in Example 1','Interpreter','latex')
+    xlabel('$S$','Interpreter','latex','FontSize',16)
+    ylabel('$t$','Interpreter','latex','FontSize',16)
+    zlabel('$P$','Interpreter','latex','FontSize',16)
+    title('Option price under regime 2 in Example 1','Interpreter','latex','FontSize',22)
+    set(gcf,'position',[10,5,560,420])
   
     
     toc
@@ -81,35 +84,32 @@ function Pic3DPCM
     V1true(:,2:end) = Vtrue1;
     V2true(:,2:end) = Vtrue2;
     
-    subplot(1,2,1)
+    subplot(1,1,1)
     mesh(S,M,V1true)
     hold on
     plot3(K-fb1,t,fb1,'k-','LineWidth',3)
     %hold on
     %plot3(K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
     axis([0 7.5 0 1 0 1])
-    xlabel('$S$','Interpreter','latex')
-    ylabel('$t$','Interpreter','latex')
-    zlabel('$P$','Interpreter','latex')
-    title('Example2: option price under regime 1','Interpreter','latex')
+    xlabel('$S$','Interpreter','latex','FontSize',16)
+    ylabel('$t$','Interpreter','latex','FontSize',16)
+    zlabel('$P$','Interpreter','latex','FontSize',16)
+    title('Option price under regime 1 in Example 2','Interpreter','latex','FontSize',22)
+    set(gcf,'position',[10,5,560,420])
+
     
-    subplot(1,2,2)
-    mesh(S,M,V2true)
-    hold on
-    plot3(K-fb2,t,fb2,'k-','LineWidth',3)
-    %hold on
-    %plot3(K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
-    axis([0 7.5 0 1 0 1])
-    xlabel('$S$','Interpreter','latex')
-    ylabel('$t$','Interpreter','latex')
-    zlabel('$P$','Interpreter','latex')
-    title('Example2: option price under regime 2','Interpreter','latex')
-    
-%     subplot(1,3,3)
-%     x = linspace(-L,L,Nx+1);
-%     s = exp(x);
-%     plot(s,Utrue1(1,:))
-%     axis([0 25 0 9])
+%     subplot(1,1,1)
+%     mesh(S,M,V2true)
+%     hold on
+%     plot3(K-fb2,t,fb2,'k-','LineWidth',3)
+%     %hold on
+%     %plot3(K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
+%     axis([0 7.5 0 1 0 1])
+%     xlabel('$S$','Interpreter','latex','FontSize',16)
+%     ylabel('$t$','Interpreter','latex','FontSize',16)
+%     zlabel('$P$','Interpreter','latex','FontSize',16)
+%     title('Option price under regime 2 in Example 2','Interpreter','latex','FontSize',22)
+%     set(gcf,'position',[10,5,560,420])
     
     toc
     

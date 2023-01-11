@@ -26,7 +26,7 @@ function [Vtrue1,Vtrue2] = DataMatrixKou(K,sigma1,sigma2,lam1,lam2,gamma,mun,rho
     [B, d1t0, d2t0, F0t0, Phi_star_t0] = AssembleBasicMatKou(dt,dx,Nx,sigma1,sigma2,nK1,nK2,mK1,mK2,A,lam1,lam2,L,K,p,q,a1,a2);
     % 再给矩阵其余部分赋值
     for i = 2:Nt+1
-
+        i
         [F, Phi_star] = AssemblecurrKou(i-1,dt,Nx,mK1,mK2,lam1,lam2,Phi_pre,Kou1,Kou2,B, d1t0, d2t0, F0t0, Phi_star_t0);
 
         Phi_cur = PCMPro(Nx,eps,gamma,mun,rho0,B,F,Phi_pre-Phi_star);

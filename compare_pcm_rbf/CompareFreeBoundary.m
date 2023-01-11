@@ -44,12 +44,13 @@ function CompareFreeBoundary
     plot(t,B_2,'b-')
 
     
-    ylabel('$S$','interpreter','latex')
-    xlabel('$t$','interpreter','latex')
+    ylabel('$S$','interpreter','latex','FontSize',16)
+    xlabel('$t$','interpreter','latex','FontSize',16)
     ylim([0 1])
     xlim([0 1])
-    set(legend('$\bar{B}_{1}$','$\tilde{B}_{1}(t)$','$B_{1}(t)$','$B_{2}(t)$',Location='northwest'),'interpreter','latex')
-    title('Optimal exercise boundaries in Example 1','Interpreter','latex')
+    set(legend('$\bar{B}_{1}$','$\tilde{B}_{1}(t)$','$B_{1}(t)$','$B_{2}(t)$',Location='northwest'),...
+        'interpreter','latex','FontSize',12)
+    title('Optimal exercise boundaries in Example 1','Interpreter','latex','FontSize',22)
 
     
     %% Kou
@@ -98,12 +99,13 @@ function CompareFreeBoundary
     hold on
     plot(t,B_2,'b-')
 
-    
-    ylabel('$S$','interpreter','latex')
-    xlabel('$t$','interpreter','latex')
+ 
+    ylabel('$S$','interpreter','latex','FontSize',16)
+    xlabel('$t$','interpreter','latex','FontSize',16)
     ylim([0 1])
     xlim([0 1])
-    set(legend('$\bar{B}_{1}$','$\tilde{B}_{1}(t)$','$B_{1}(t)$','$B_{2}(t)$',Location='northwest'),'interpreter','latex')
-    title('Optimal exercise boundaries in Example 2','Interpreter','latex')
+    set(legend('$\bar{B}_{1}$','$\tilde{B}_{1}(t)$','$B_{1}(t)$','$B_{2}(t)$',Location='northwest'),...
+        'interpreter','latex','FontSize',12)
+    title('Optimal exercise boundaries in Example 2','Interpreter','latex','FontSize',22)
 
 end

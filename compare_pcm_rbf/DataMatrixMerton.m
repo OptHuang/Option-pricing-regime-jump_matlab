@@ -27,6 +27,7 @@ function [Vtrue1,Vtrue2] = DataMatrixMerton(K,sigma1,sigma2,lam1,lam2,gamma,mun,
     mu_star1,mu_star2,mu,delt);
     % 再给矩阵其余部分赋值
     for i = 2:Nt+1
+        i
         [F, Phi_star] = AssemblecurrMerton(i-1,dt,Nx,mM1,mM2,lam1,lam2,Phi_pre,Merton1,Merton2,B,d1t0,d2t0,F0t0,Phi_star_t0);
         Phi_cur = PCMPro(Nx,eps,gamma,mun,rho0,B,F,Phi_pre-Phi_star);
         Vtrue1(i,2:Nx) = Phi_cur(1:Nx-1).'+Phi_star(1:Nx-1).';

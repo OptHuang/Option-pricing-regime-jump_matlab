@@ -14,7 +14,7 @@ function ErrOrder
     Nt0 = 100000;
     Nx0 = 4;
     % 导入真解
-    load('../Data/Vmertrue100000512_02.mat')
+    load('../data_truevalue/Vmertrue100000512_02.mat')
     U1_star0 = Vmertrue1(end,:);
     U2_star0 = Vmertrue2(end,:);
 
@@ -49,11 +49,11 @@ function ErrOrder
     log(Norm1)
     
     plot(log(N0),log(Norm1),'-ro',log(N0),log(Norm2)-1,'-g*',log(N0),Standard,'-b')
-    xlabel('$\log(N_x)$','Interpreter','latex')
-    ylabel('log(error)','Interpreter','latex')
+    xlabel('$\log(N_x)$','Interpreter','latex','FontSize',16)
+    ylabel('log(error)','Interpreter','latex','FontSize',16)
     axis([1.3,4.2,-9.2,-1.7 ])
-    legend('log(error)--regime 1','log(error)--regime 2','order 2','Interpreter','latex')
-    title('Convergence order in Example 1','Interpreter','latex')
+    legend('log(error)--regime 1','log(error)--regime 2','order 2','Interpreter','latex','FontSize',12)
+    title('Convergence order in Example 1','Interpreter','latex','FontSize',22)
     %saveas(gcf,'myfig.jpg')
 
     
@@ -72,7 +72,7 @@ function ErrOrder
 
 
     % 导入真解
-    load('../Data/Vkoutrue100000512_02.mat')
+    load('../data_truevalue/Vkoutrue100000512_02.mat')
     U1_star0 = Vkoutrue1(end,:);
     U2_star0 = Vkoutrue2(end,:);
 
@@ -95,7 +95,7 @@ function ErrOrder
 
         Norm1(i) = sqrt(intF1*intF1'*2*L/(Nx0*2^(i-1)));
         Norm2(i) = sqrt(intF2*intF2'*2*L/(Nx0*2^(i-1)));
-
+yi
     end
     
     N0 = [Nx0 Nx0*2 Nx0*4 Nx0*8 Nx0*16];
@@ -104,11 +104,11 @@ function ErrOrder
     log(Norm1)
     
     plot(log(N0),log(Norm1),'-ro',log(N0),log(Norm2)-1,'-g*',log(N0),Standard,'-b')
-    xlabel('$\log(N_x)$','Interpreter','latex')
-    ylabel('log(error)','Interpreter','latex')
+    xlabel('$\log(N_x)$','Interpreter','latex','FontSize',16)
+    ylabel('log(error)','Interpreter','latex','FontSize',16)
     axis([2,5,-10,-2 ])
-    legend('log(error)--regime 1','log(error)--regime 2','order 2','Interpreter','latex')
-    title('Convergence order in Example 2','Interpreter','latex')
+    legend('log(error)--regime 1','log(error)--regime 2','order 2','Interpreter','latex','FontSize',12)
+    title('Convergence order in Example 2','Interpreter','latex','FontSize',22)
     %saveas(gcf,'myfig.jpg')
 
 end
