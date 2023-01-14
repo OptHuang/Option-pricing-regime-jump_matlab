@@ -33,7 +33,7 @@ function [T,K,sigma1,sigma2,r1,r2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0
     A = [a11 a12;a21 a22];
     
     % 截取边界
-    L = TruncationTech(K,1,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A);
+    L = TruncationTech(K,0,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A);
     
     x0 = -L;  % 传入空间左侧起点
     t0 = 0;   % 传入时间起点

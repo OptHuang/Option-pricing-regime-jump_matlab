@@ -33,7 +33,7 @@ function [T,K,sigma1,sigma2,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,Nx,Nt,dx,dt,.
     %%%%%%%%%%%
     % 注意这里不同的类别要修改第二项 0 Merton, 1 Kou
     %%%%%%%%%%%
-    L = TruncationTech(K,0,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A);
+    L = TruncationTech(K,1,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A);
     
     x0 = -L;  % 传入空间左侧起点
     t0 = 0;   % 传入时间起点

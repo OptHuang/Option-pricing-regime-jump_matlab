@@ -21,7 +21,6 @@ function ErrOrder
     len = size(U1_star0,2) - 1;
 
 
-
     for i = 1:5
         mult = len/Nx0/2^(i-1);
 
@@ -48,11 +47,11 @@ function ErrOrder
     Standard = -k*log(N0)+1;
     log(Norm1)
     
-    plot(log(N0),log(Norm1),'-ro',log(N0),log(Norm2)-1,'-g*',log(N0),Standard,'-b')
+    plot(log(N0),Standard,'-b',log(N0),log(Norm1),'-ro',log(N0),log(Norm2)-1,'-g*')
     xlabel('$\log(N_x)$','Interpreter','latex','FontSize',16)
     ylabel('log(error)','Interpreter','latex','FontSize',16)
     axis([1.3,4.2,-9.2,-1.7 ])
-    legend('log(error)--regime 1','log(error)--regime 2','order 2','Interpreter','latex','FontSize',12)
+    legend('order 2','log(error)--regime 1','log(error)--regime 2','Interpreter','latex','FontSize',12)
     title('Convergence order in Example 1','Interpreter','latex','FontSize',22)
     %saveas(gcf,'myfig.jpg')
 
@@ -95,7 +94,7 @@ function ErrOrder
 
         Norm1(i) = sqrt(intF1*intF1'*2*L/(Nx0*2^(i-1)));
         Norm2(i) = sqrt(intF2*intF2'*2*L/(Nx0*2^(i-1)));
-yi
+        
     end
     
     N0 = [Nx0 Nx0*2 Nx0*4 Nx0*8 Nx0*16];
@@ -103,11 +102,11 @@ yi
     Standard = -k*log(N0)+2;
     log(Norm1)
     
-    plot(log(N0),log(Norm1),'-ro',log(N0),log(Norm2)-1,'-g*',log(N0),Standard,'-b')
+    plot(log(N0),Standard,'-b',log(N0),log(Norm1),'-ro',log(N0),log(Norm2)-1,'-g*')
     xlabel('$\log(N_x)$','Interpreter','latex','FontSize',16)
     ylabel('log(error)','Interpreter','latex','FontSize',16)
     axis([2,5,-10,-2 ])
-    legend('log(error)--regime 1','log(error)--regime 2','order 2','Interpreter','latex','FontSize',12)
+    legend('order 2','log(error)--regime 1','log(error)--regime 2','Interpreter','latex','FontSize',12)
     title('Convergence order in Example 2','Interpreter','latex','FontSize',22)
     %saveas(gcf,'myfig.jpg')
 

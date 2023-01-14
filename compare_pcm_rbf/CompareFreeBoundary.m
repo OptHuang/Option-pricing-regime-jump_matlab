@@ -33,22 +33,21 @@ function CompareFreeBoundary
     B_2 = K-flipud(fb_2);
     
     % 绘制图像
-    plot(t,B_bar1*ones(size(t)),'linewidth',3)
+    plot(t,B_2,'b-')
+    hold on
+    plot(t,B_1,'g-')
     hold on
     plot(t,B_star1,'r-')
     hold on
-    %plot(B_star2,t,'c-')
-    %hold on
-    plot(t,B_1,'g-')
+    plot(t,B_bar1*ones(size(t)),'Color','#0072BD','linewidth',3)
     hold on
-    plot(t,B_2,'b-')
 
     
     ylabel('$S$','interpreter','latex','FontSize',16)
     xlabel('$t$','interpreter','latex','FontSize',16)
     ylim([0 1])
     xlim([0 1])
-    set(legend('$\bar{B}_{1}$','$\tilde{B}_{1}(t)$','$B_{1}(t)$','$B_{2}(t)$',Location='northwest'),...
+    set(legend('$B_{2}(t)$','$B_{1}(t)$','$\tilde{B}_{1}(t)$','$\bar{B}_{1}$',Location='northwest'),...
         'interpreter','latex','FontSize',12)
     title('Optimal exercise boundaries in Example 1','Interpreter','latex','FontSize',22)
 
@@ -88,23 +87,22 @@ function CompareFreeBoundary
     B_1 = K-flipud(fb_1);
     B_2 = K-flipud(fb_2);
     
-    % 绘制图像
-    plot(t,B_bar1*ones(size(t)),'linewidth',3)
+    % 绘制图像g
+    plot(t,B_2,'b-')
+    hold on
+    plot(t,B_1,'g-')
     hold on
     plot(t,B_star1,'r-')
     hold on
-    %plot(t,B_star2,'c-')
-    %hold on
-    plot(t,B_1,'g-')
+    plot(t,B_bar1*ones(size(t)),'Color','#0072BD','linewidth',3)
     hold on
-    plot(t,B_2,'b-')
 
  
     ylabel('$S$','interpreter','latex','FontSize',16)
     xlabel('$t$','interpreter','latex','FontSize',16)
     ylim([0 1])
     xlim([0 1])
-    set(legend('$\bar{B}_{1}$','$\tilde{B}_{1}(t)$','$B_{1}(t)$','$B_{2}(t)$',Location='northwest'),...
+    set(legend('$B_{2}(t)$','$B_{1}(t)$','$\tilde{B}_{1}(t)$','$\bar{B}_{1}$',Location='northwest'),...
         'interpreter','latex','FontSize',12)
     title('Optimal exercise boundaries in Example 2','Interpreter','latex','FontSize',22)
 
