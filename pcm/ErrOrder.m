@@ -11,10 +11,10 @@ function ErrOrder
     Norm1 = zeros(1,5);
     Norm2 = zeros(1,5);
     
-    Nt0 = 100000;
-    Nx0 = 4;
+    Nx0 = 8;
+    
     % 导入真解
-    load('../data_truevalue/Vmertrue100000512_02.mat')
+    load('../data_truevalue/class=0_d=0.025_lam1=0.25_lam2=0.20_Nx=512_Nt=104858.mat')
     U1_star0 = Vmertrue1(end,:);
     U2_star0 = Vmertrue2(end,:);
 
@@ -23,8 +23,9 @@ function ErrOrder
 
     for i = 1:5
         mult = len/Nx0/2^(i-1);
-
-        [Upcm1,Upcm2] = DataMatrixMerton(K,sigma1,sigma2,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,Nx0*2^(i-1),Nt0,2*L/Nx0/2^(i-1),T/Nt0,...
+        Nx = Nx0*2^(i-1);
+        Nt = round(Nx^2/2.5);
+        [Upcm1,Upcm2] = DataMatrixMerton(K,sigma1,sigma2,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,Nx,Nt,2*L/Nx,T/Nt,...
         mu,delt,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2);
         Ut1 = Upcm1(end,:);
         Ut2 = Upcm2(end,:);
@@ -65,13 +66,11 @@ function ErrOrder
     ~,~,~,~,~,~,~,~,~,~,p,q,a1,a2,~,nK1,nK2,mK1,mK2] = ParaImput(1);
     Norm1 = zeros(1,5);
     Norm2 = zeros(1,5);
-    
-    Nt0 = 100000;
+
     Nx0 = 8;
 
-
     % 导入真解
-    load('../data_truevalue/Vkoutrue100000512_02.mat')
+    load('../data_truevalue/class=1_d=0.025_lam1=0.25_lam2=0.20_Nx=512_Nt=104858.mat')
     U1_star0 = Vkoutrue1(end,:);
     U2_star0 = Vkoutrue2(end,:);
 
@@ -79,8 +78,9 @@ function ErrOrder
 
     for i = 1:5
         mult = len/Nx0/2^(i-1);
-
-        [Upcm1,Upcm2] = DataMatrixKou(K,sigma1,sigma2,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,Nx0*2^(i-1),Nt0,2*L/Nx0/2^(i-1),T/Nt0,...
+        Nx = Nx0*2^(i-1);
+        Nt = round(Nx^2/2.5);
+        [Upcm1,Upcm2] = DataMatrixKou(K,sigma1,sigma2,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,Nx,Nt,2*L/Nx,T/Nt,...
         p,q,a1,a2,nK1,nK2,mK1,mK2);
         Ut1 = Upcm1(end,:);
         Ut2 = Upcm2(end,:);
