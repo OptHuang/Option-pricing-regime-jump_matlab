@@ -11,12 +11,12 @@ function ErrOrder
     Norm1 = zeros(1,5);
     Norm2 = zeros(1,5);
     
-    Nx0 = 8;
+    Nx0 = 4;
     
     % 导入真解
     load('../data_truevalue/class=0_d=0.025_lam1=0.25_lam2=0.20_Nx=512_Nt=104858.mat')
-    U1_star0 = Vmertrue1(end,:);
-    U2_star0 = Vmertrue2(end,:);
+    U1_star0 = VecMertrue1;
+    U2_star0 = VecMertrue2;
 
     len = size(U1_star0,2) - 1;
 
@@ -67,12 +67,12 @@ function ErrOrder
     Norm1 = zeros(1,5);
     Norm2 = zeros(1,5);
 
-    Nx0 = 8;
+    Nx0 = 4;
 
     % 导入真解
     load('../data_truevalue/class=1_d=0.025_lam1=0.25_lam2=0.20_Nx=512_Nt=104858.mat')
-    U1_star0 = Vkoutrue1(end,:);
-    U2_star0 = Vkoutrue2(end,:);
+    U1_star0 = VecKoutrue1;
+    U2_star0 = VecKoutrue2;
 
     len = size(U1_star0,2) - 1;
 
