@@ -1,6 +1,8 @@
-function [T,K,sigma1,sigma2,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,Nx,Nt,dx,dt,...
-    mu,delt,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput()
+function [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,Nx,Nt,dx,dt,...
+    mu,delt,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput(class)
     % 由于参数比较多，所以写一个传入参数的函数方便修改调用
+    % class=0: Merton; class=1: Kou
+
     
     T = 1;  % 传入时间上界T
     K = 1;  % 传入K值 
@@ -33,7 +35,13 @@ function [T,K,sigma1,sigma2,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,Nx,Nt,dx,dt,.
     %%%%%%%%%%%
     % 注意这里不同的类别要修改第二项 0 Merton, 1 Kou
     %%%%%%%%%%%
-    L = TruncationTech(K,1,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A);
+
+    switch class
+        case 0
+            L = TruncationTech(K,0,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A);
+        case 1
+            L = TruncationTech(K,1,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A);
+    end
     
     x0 = -L;  % 传入空间左侧起点
     t0 = 0;   % 传入时间起点

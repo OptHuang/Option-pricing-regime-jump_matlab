@@ -6,8 +6,8 @@ function ErrOrder
     clear
     clc
     
-    [T,K,sigma1,sigma2,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,~,~,~,~,...
-    mu,delt,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,~,~,~,~,~,~,~,~,~] = ParaImput();
+    [T,K,sigma1,sigma2,~,~,~,~,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,~,~,~,~,...
+    mu,delt,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,~,~,~,~,~,~,~,~,~] = ParaImput(0);
     Norm1 = zeros(1,5);
     Norm2 = zeros(1,5);
     
@@ -61,8 +61,8 @@ function ErrOrder
     clear
     clc
     
-    [T,K,sigma1,sigma2,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,~,~,~,~,...
-    ~,~,~,~,~,~,~,~,~,~,p,q,a1,a2,~,nK1,nK2,mK1,mK2] = ParaImput();
+    [T,K,sigma1,sigma2,~,~,~,~,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,~,~,~,~,...
+    ~,~,~,~,~,~,~,~,~,~,p,q,a1,a2,~,nK1,nK2,mK1,mK2] = ParaImput(1);
     Norm1 = zeros(1,5);
     Norm2 = zeros(1,5);
     
