@@ -1,17 +1,19 @@
-function [T,K,sigma1,sigma2,r1,r2,lam1,lam2,L,epsilon,A,x0,t0,Nx,Nt,dx,dt,...
+function [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,L,epsilon,A,x0,t0,Nx,Nt,dx,dt,...
     mu,delt,p,q,a1,a2,kappaM,kappaK] = ParaImput()
     % 由于参数比较多，所以写一个传入参数的函数方便修改调用
     
     T = 1;  % 传入时间上界T
-    K = 10;  % 传入K值 
+    K = 1;  % 传入K值 
     
     % 传入两种制度下的波动率sigma,无风险利率r,红利d,跳跃强度λ,期望k
-    sigma1 = 0.3;
-    sigma2 = 0.4;
+    sigma1 = 0.8;
+    sigma2 = 0.3;
     r1 = 0.05;
     r2 = 0.05;
-    lam1 = 0;
-    lam2 = 0;
+    d1 = 0.05;
+    d2 = 0.05;
+    lam1 = 0.25;
+    lam2 = 0.2;
 
     
     % 截取边界
@@ -30,7 +32,7 @@ function [T,K,sigma1,sigma2,r1,r2,lam1,lam2,L,epsilon,A,x0,t0,Nx,Nt,dx,dt,...
     t0 = 0;   % 传入时间起点
     
     Nt = 200;  % 传入时间分划段数
-    Nx = 300;   % 传入空间分划段数
+    Nx = 128;   % 传入空间分划段数
 
     dt = T/Nt;    % 计算出时间分划间距
     dx = 2*L/Nx;  % 计算出空间分划间距

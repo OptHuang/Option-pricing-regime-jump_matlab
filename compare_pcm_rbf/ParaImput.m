@@ -1,4 +1,4 @@
-function [T,K,sigma1,sigma2,r1,r2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
+function [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
     mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput()
     % 由于参数比较多，所以写一个传入参数的函数方便修改调用
     
@@ -10,9 +10,9 @@ function [T,K,sigma1,sigma2,r1,r2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0
     sigma2 = 0.3;
     r1 = 0.05;
     r2 = 0.05;
-    d1 = 0;
-    d2 = 0;
-    lam1 = 0.2;
+    d1 = 0.05;
+    d2 = 0.05;
+    lam1 = 0.25;
     lam2 = 0.2;
 
     
@@ -38,8 +38,8 @@ function [T,K,sigma1,sigma2,r1,r2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0
     x0 = -L;  % 传入空间左侧起点
     t0 = 0;   % 传入时间起点
     
-    Nt = 500;  % 传入时间分划段数
-    Nx = 256;   % 传入空间分划段数
+    Nt = 200;  % 传入时间分划段数
+    Nx = 128;   % 传入空间分划段数
 
     dt = T/Nt;    % 计算出时间分划间距
     dx = 2*L/Nx;  % 计算出空间分划间距

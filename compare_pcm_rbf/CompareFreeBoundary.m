@@ -2,7 +2,7 @@ function CompareFreeBoundary
     % 比较不同几种期权的自由边界
     
     %% Merton
-    [T,K,sigma1,sigma2,r1,r2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
+    [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
     mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput();
     
     t = linspace(0,1,Nt+1);
@@ -17,7 +17,7 @@ function CompareFreeBoundary
 
      % 计算两种波动率下的美式看跌跳扩散的自由边界曲线 B_star1,B_star2
     A_star = 0*A;
-    [mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2] = Mertonpara(sigma1,sigma2,r1,r2,0,0,lam1,lam2,A_star);
+    [mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2] = Mertonpara(sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A_star);
     [Vstar1,Vstar2] = DataMatrixMerton(K,sigma1,sigma2,lam1,lam2,gamma,mun,rho0,eps,L,A_star,x0,t0,Nx,Nt,dx,dt,...
     mu,delt,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2);
     [~,~,fb1,fb2] = FreeBoundry(Vstar1,Vstar2,K,L,Nx,Nt);
@@ -25,7 +25,7 @@ function CompareFreeBoundary
     B_star2 = K-flipud(fb2);
     
     % 计算两种波动率下的美式看跌制度转换跳扩散 B_1,B_2
-    [mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2] = Mertonpara(sigma1,sigma2,r1,r2,0,0,lam1,lam2,A);
+    [mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2] = Mertonpara(sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A);
     [Vtrue1,Vtrue2] = DataMatrixMerton(K,sigma1,sigma2,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,Nx,Nt,dx,dt,...
     mu,delt,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2);
     [~,~,fb_1,fb_2] = FreeBoundry(Vtrue1,Vtrue2,K,L,Nx,Nt);

@@ -2,7 +2,7 @@ function contract_pcmrbf_samefig
     % 在一张图上比较pcm和rbf算出来的解, 看是否吻合
     
     %% Merton
-    [T,K,sigma1,sigma2,r1,r2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
+    [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
     mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput();
 
     x = linspace(-L,L,Nx+1); 
@@ -19,7 +19,7 @@ function contract_pcmrbf_samefig
     Vpcm1(2:end) = Vpcmtrue1(end,:);
     Vpcm2(2:end) = Vpcmtrue2(end,:);
     
-    [Coefmatrix,A1] = RBFassemblemat(1,0,dt,Nx,A,sigma1,sigma2,r1,r2,lam1,lam2,...
+    [Coefmatrix,A1] = RBFassemblemat(1,0,dt,Nx,A,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,...
     kappaM,kappaK,mu,delt,p,q,a1,a2,L,epsilon);
     [Lmat,Umat] = lu(Coefmatrix);
     [Vrbftrue1,Vrbftrue2] = SolveRBF(Lmat,Umat,A1,L,Nx,Nt,K);
@@ -94,7 +94,7 @@ function contract_pcmrbf_samefig
     
     
     %% Kou
-    [T,K,sigma1,sigma2,r1,r2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
+    [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
     mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput();
 
     x = linspace(-L,L,Nx+1); 
@@ -111,7 +111,7 @@ function contract_pcmrbf_samefig
     Vpcm1(2:end) = Vpcmtrue1(end,:);
     Vpcm2(2:end) = Vpcmtrue2(end,:);
     
-    [Coefmatrix,A1] = RBFassemblemat(1,1,dt,Nx,A,sigma1,sigma2,r1,r2,lam1,lam2,...
+    [Coefmatrix,A1] = RBFassemblemat(1,1,dt,Nx,A,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,...
     kappaM,kappaK,mu,delt,p,q,a1,a2,L,epsilon);
     [Lmat,Umat] = lu(Coefmatrix);
     [Vrbftrue1,Vrbftrue2] = SolveRBF(Lmat,Umat,A1,L,Nx,Nt,K);

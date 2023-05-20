@@ -10,9 +10,9 @@ function [T,K,sigma1,sigma2,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,Nx,Nt,dx,dt,.
     sigma2 = 0.3;
     r1 = 0.05;
     r2 = 0.05;
-    d1 = 0;
-    d2 = 0;
-    lam1 = 0.2;
+    d1 = 0.025;
+    d2 = 0.025;
+    lam1 = 0.25;
     lam2 = 0.2;
 
     
@@ -39,7 +39,7 @@ function [T,K,sigma1,sigma2,lam1,lam2,gamma,mun,rho0,eps,L,A,x0,t0,Nx,Nt,dx,dt,.
     t0 = 0;   % 传入时间起点
     
     Nt = 200;  % 传入时间分划段数
-    Nx = 300;   % 传入空间分划段数
+    Nx = 100;   % 传入空间分划段数
 
     dt = T/Nt;    % 计算出时间分划间距
     dx = 2*L/Nx;  % 计算出空间分划间距

@@ -4,10 +4,10 @@ function Pic3DRBF
     format long
     tic
     
-    [T,K,sigma1,sigma2,r1,r2,lam1,lam2,L,epsilon,A,~,~,Nx,Nt,~,dt,...
+    [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,L,epsilon,A,~,~,Nx,Nt,~,dt,...
     mu,delt,p,q,a1,a2,kappaM,kappaK] = ParaImput();
     
-    [Coefmatrix,A1] = RBFassemblemat(0,0,dt,Nx,A,sigma1,sigma2,r1,r2,lam1,lam2,...
+    [Coefmatrix,A1] = RBFassemblemat(0,0,dt,Nx,A,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,...
     kappaM,kappaK,mu,delt,p,q,a1,a2,L,epsilon);
     [Lmat,Umat] = lu(Coefmatrix);
     
@@ -27,7 +27,7 @@ function Pic3DRBF
 %     plot3(K-fb1,t,fb1,'k-','LineWidth',3)
 %     hold on
 %     plot3(K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
-    axis([0 30 0 1 0 12])
+    axis([0 3 0 1 0 1])
     xlabel('S')
     ylabel('T')
     zlabel('P')
@@ -39,7 +39,7 @@ function Pic3DRBF
 %     plot3(K-fb2,t,fb2,'k-','LineWidth',3)
 %     hold on
 %     plot3(K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
-    axis([0 30 0 1 0 12])
+    axis([0 3 0 1 0 1])
     xlabel('S')
     ylabel('T')
     zlabel('P')
