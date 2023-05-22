@@ -1,5 +1,5 @@
 function [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
-    mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput()
+    mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput(class)
     % 由于参数比较多，所以写一个传入参数的函数方便修改调用
     
     T = 1;  % 传入时间上界T
@@ -10,8 +10,8 @@ function [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A
     sigma2 = 0.3;
     r1 = 0.05;
     r2 = 0.05;
-    d1 = 0.05;
-    d2 = 0.05;
+    d1 = 0.025;
+    d2 = 0.025;
     lam1 = 0.25;
     lam2 = 0.2;
 
@@ -33,7 +33,16 @@ function [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A
     A = [a11 a12;a21 a22];
     
     % 截取边界
-    L = TruncationTech(K,0,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A);
+    %%%%%%%%%%%
+    % 注意这里不同的类别要修改第二项 0 Merton, 1 Kou
+    %%%%%%%%%%%
+
+    switch class
+        case 0
+            L = TruncationTech(K,0,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A);
+        case 1
+            L = TruncationTech(K,1,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A);
+    end
     
     x0 = -L;  % 传入空间左侧起点
     t0 = 0;   % 传入时间起点

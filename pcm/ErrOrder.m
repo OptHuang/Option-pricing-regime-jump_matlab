@@ -11,7 +11,7 @@ function ErrOrder
     Norm1 = zeros(1,5);
     Norm2 = zeros(1,5);
     
-    Nx0 = 4;
+    Nx0 = 8;
     
     % 导入真解
     load('../data_truevalue/class=0_d=0.025_lam1=0.25_lam2=0.20_Nx=512_Nt=104858.mat')
@@ -67,7 +67,7 @@ function ErrOrder
     Norm1 = zeros(1,5);
     Norm2 = zeros(1,5);
 
-    Nx0 = 4;
+    Nx0 = 32;
 
     % 导入真解
     load('../data_truevalue/class=1_d=0.025_lam1=0.25_lam2=0.20_Nx=512_Nt=104858.mat')

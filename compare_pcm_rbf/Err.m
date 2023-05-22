@@ -1,19 +1,19 @@
 function Err
     
     %% Merton PCM
-    load('../Data/Vmertrue100000512_02.mat')
-    Nxtrue = size(Vmertrue1,2)-1;
+    load('../data_truevalue/class=0_d=0.025_lam1=0.25_lam2=0.20_Nx=512_Nt=104858.mat')
+    Nxtrue = size(VecMertrue1,2)-1;
 
-    [T,K,sigma1,sigma2,r1,r2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
-    mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput();
+    [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
+    mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput(0);
     
-    Nt0 = 200;
     Nx0 = 128;
+    Nt0 = round(Nx0^2/2.5);
     
     mult = Nxtrue/Nx0;
     
-    U1_star0 = Vmertrue1(end,:);
-    U2_star0 = Vmertrue2(end,:);
+    U1_star0 = VecMertrue1;
+    U2_star0 = VecMertrue2;
     U1_star = zeros(1,Nx0+1);
     U2_star = zeros(1,Nx0+1);
     
@@ -41,19 +41,19 @@ function Err
     res = sprintf("%e", Norm)
     
     %% Merton RBF
-    load('../Data/Vmertrue100000512_02.mat')
-    Nxtrue = size(Vmertrue1,2)-1;
+    load('../data_truevalue/class=0_d=0.025_lam1=0.25_lam2=0.20_Nx=512_Nt=104858.mat')
+    Nxtrue = size(VecMertrue1,2)-1;
     
-    [T,K,sigma1,sigma2,r1,r2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
-    mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput();
+    [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
+    mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput(0);
     
-    Nt0 = 200;
-    Nx0 = 64;
+    Nx0 = 128;
+    Nt0 = round(Nx0^2/2.5);
     
     mult = Nxtrue/Nx0;
     
-    U1_star0 = Vmertrue1(end,:);
-    U2_star0 = Vmertrue2(end,:);
+    U1_star0 = VecMertrue1;
+    U2_star0 = VecMertrue2;
     U1_star = zeros(1,Nx0+1);
     U2_star = zeros(1,Nx0+1);
     
@@ -65,7 +65,7 @@ function Err
 
     tic
     
-    [Coefmatrix,A1] = RBFassemblemat(1,0,1/Nt0,Nx0,A,sigma1,sigma2,r1,r2,lam1,lam2,...
+    [Coefmatrix,A1] = RBFassemblemat(1,0,1/Nt0,Nx0,A,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,...
     kappaM,kappaK,mu,delt,p,q,a1,a2,L,epsilon);
     [Lmat,Umat] = lu(Coefmatrix);
 
@@ -84,19 +84,19 @@ function Err
     res = sprintf("%e", Norm)
     
     %% Kou PCM
-    load('../Data/Vkoutrue100000512_02.mat')
-    Nxtrue = size(Vkoutrue1,2)-1;
+    load('../data_truevalue/class=1_d=0.025_lam1=0.25_lam2=0.20_Nx=1024_Nt=419430.mat')
+    Nxtrue = size(VecKoutrue1,2)-1;
 
-    [T,K,sigma1,sigma2,r1,r2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
-    mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput();
+    [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
+    mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput(1);
     
-    Nt0 = 300;
     Nx0 = 128;
+    Nt0 = round(Nx0^2/2.5);
     
     mult = Nxtrue/Nx0;
     
-    U1_star0 = Vkoutrue1(end,:);
-    U2_star0 = Vkoutrue2(end,:);
+    U1_star0 = VecKoutrue1;
+    U2_star0 = VecKoutrue2;
     U1_star = zeros(1,Nx0+1);
     U2_star = zeros(1,Nx0+1);
     
@@ -124,19 +124,19 @@ function Err
     res = sprintf("%e", Norm)
     
     %% Kou RBF
-    load('../Data/Vkoutrue100000512_02.mat')
-    Nxtrue = size(Vkoutrue1,2)-1;
+    load('../data_truevalue/class=1_d=0.025_lam1=0.25_lam2=0.20_Nx=1024_Nt=419430.mat')
+    Nxtrue = size(VecKoutrue1,2)-1;
 
-    [T,K,sigma1,sigma2,r1,r2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
-    mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput();
+    [T,K,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,gamma,mun,rho0,eps,epsilon,L,A,x0,t0,Nx,Nt,dx,dt,...
+    mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2,p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = ParaImput(1);
     
-    Nt0 = 300;
-    Nx0 = 128;
+    Nx0 = 256;
+    Nt0 = round(Nx0^2/2.5);
     
     mult = Nxtrue/Nx0;
     
-    U1_star0 = Vkoutrue1(end,:);
-    U2_star0 = Vkoutrue2(end,:);
+    U1_star0 = VecKoutrue1;
+    U2_star0 = VecKoutrue2;
     U1_star = zeros(1,Nx0+1);
     U2_star = zeros(1,Nx0+1);
     
@@ -148,7 +148,7 @@ function Err
 
     tic
     
-    [Coefmatrix,A1] = RBFassemblemat(1,1,1/Nt0,Nx0,A,sigma1,sigma2,r1,r2,lam1,lam2,...
+    [Coefmatrix,A1] = RBFassemblemat(1,1,1/Nt0,Nx0,A,sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,...
     kappaM,kappaK,mu,delt,p,q,a1,a2,L,epsilon);
     [Lmat,Umat] = lu(Coefmatrix);
     
