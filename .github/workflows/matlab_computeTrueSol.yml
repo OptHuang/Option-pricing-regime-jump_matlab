@@ -59,11 +59,11 @@ jobs:
     - name: Set outputs from MATLAB function
       id: set-outputs
       run: |
-        echo "::set-output name=full_path::$(echo '${{ steps.run-matlab-function.outputs.stdout }}' | grep -oP '(?<=full_path: ).*')"
-        echo "::set-output name=filename::$(echo '${{ steps.run-matlab-function.outputs.stdout }}' | grep -oP '(?<=filename: ).*')"
+        echo "full_path=$(echo '${{ steps.run-matlab-function.outputs.stdout }}' | grep -oP '(?<=full_path: ).*')" >> $GITHUB_ENV
+        echo "filename=$(echo '${{ steps.run-matlab-function.outputs.stdout }}' | grep -oP '(?<=filename: ).*')" >> $GITHUB_ENV
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
         name: results
-        path: ${{ steps.set-outputs.outputs.full_path }}/${{ steps.set-outputs.outputs.filename }}
+        path: ${{ env.full_path }}/${{ env.filename }}
