@@ -1,4 +1,4 @@
-function ComputeTrueSol(Nx,mesh_ratio,problem_paras,options)
+function [full_path,filename] = ComputeTrueSol(Nx,mesh_ratio,problem_paras,options)
     
     currentFolder = fileparts(mfilename('fullpath'));
     testSubFolder = fullfile(currentFolder, '..', 'methods');
