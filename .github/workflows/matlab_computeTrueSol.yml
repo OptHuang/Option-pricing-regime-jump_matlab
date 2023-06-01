@@ -27,7 +27,10 @@ jobs:
         command: |
           % Get the root directory path
           root = pwd();
-          putenv(sprintf('ROOT_PATH=%s', root));
+          temp_root_path = fullfile(getenv('GITHUB_WORKSPACE'), 'temp_root.txt');
+          fid = fopen(temp_root_path, 'w');
+          fprintf(fid, '%s', root);
+          fclose(fid);
 
           % Change to tests folder
           cd tests
@@ -61,12 +64,12 @@ jobs:
           fprintf(fid, 'filename: %s\n', filename);
           fclose(fid);
 
-    - name: Read output from temp file
+    - name: Read output from temp files
       run: |
         echo "Content of temp_output.txt:"
         cat temp_output.txt
         echo "full_path=$(grep -oP 'full_path: \K.*' temp_output.txt)" >> $GITHUB_ENV
-        echo "root_path=$(printenv ROOT_PATH)" >> $GITHUB_ENV
+        echo "root_path=$(cat temp_root.txt)" >> $GITHUB_ENV
         echo "filename=$(grep -oP 'filename: \K.*' temp_output.txt)" >> $GITHUB_ENV
 
     - name: Debug environment variables
