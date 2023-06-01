@@ -62,6 +62,7 @@ jobs:
         echo "Content of temp_output.txt:"
         cat temp_output.txt
         echo "full_path=$(grep -oP 'full_path: \K.*' temp_output.txt)" >> $GITHUB_ENV
+        echo "file_path=$(dirname "$(grep -oP 'full_path: \K.*' temp_output.txt)")" >> $GITHUB_ENV
         echo "filename=$(grep -oP 'filename: \K.*' temp_output.txt)" >> $GITHUB_ENV
 
     - name: Debug environment variables
@@ -69,8 +70,8 @@ jobs:
         echo "full_path: ${{ env.full_path }}"
         echo "filename: ${{ env.filename }}"
 
-    - name: Upload artifacts
+    - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-        name: results
-        path: ${{ env.full_path }}/${{ env.filename }}
+        name: ${{ env.filename }}
+        path: ${{ env.file_path }}/${{ env.filename }}
