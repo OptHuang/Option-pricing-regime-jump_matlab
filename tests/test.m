@@ -23,15 +23,15 @@ function test
 %     Compare_ErrTime(Nx,Nt,problem_paras,64,5)
 
 
-%     Nx = 128;
-%     mesh_ratio = 5;
-%     [full_path, filename] = ComputeTrueSol(Nx, mesh_ratio, problem_paras);
-%     fprintf('full_path: %s\n', full_path);
-%     fprintf('filename: %s\n', filename);
+    Nx = 512;
+    mesh_ratio = 5;
+    [full_path, filename] = ComputeTrueSol(Nx, mesh_ratio, problem_paras);
+    fprintf('full_path: %s\n', full_path);
+    fprintf('filename: %s\n', filename);
 
 
-    fixwhich = "ratio";
-    options.pcm_eps = 1e-7;
-    ErrorOrder(fixwhich,3,problem_paras,128,5,options)
+%     fixwhich = "ratio";
+%     options.pcm_eps = 1e-7;
+%     ErrorOrder(fixwhich,3,problem_paras,128,5,options)
 
 end
