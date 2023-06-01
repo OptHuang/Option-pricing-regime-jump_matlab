@@ -25,6 +25,9 @@ jobs:
       uses: matlab-actions/run-command@v1.2.0
       with:
         command: |
+          % Change to tests folder
+          cd tests
+
           % Add MATLAB functions to path
           currentFolder = fileparts(which('ComputeTrueSol'));
           methodsFolder = fullfile(currentFolder, '..', 'methods');
