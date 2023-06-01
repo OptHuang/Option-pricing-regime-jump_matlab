@@ -51,13 +51,16 @@ jobs:
           Nx = ${{ matrix.Nx }};
           mesh_ratio = ${{ matrix.mesh_ratio }};
           [full_path, filename] = ComputeTrueSol(Nx, mesh_ratio, problem_paras);
-          fid = fopen('temp_output.txt', 'w');
+          temp_output_path = fullfile(getenv('GITHUB_WORKSPACE'), 'temp_output.txt');
+          fid = fopen(temp_output_path, 'w');
           fprintf(fid, 'full_path: %s\n', full_path);
           fprintf(fid, 'filename: %s\n', filename);
           fclose(fid);
 
     - name: Read output from temp file
       run: |
+        echo "Content of temp_output.txt:"
+        cat temp_output.txt
         echo "full_path=$(grep -oP 'full_path: \K.*' temp_output.txt)" >> $GITHUB_ENV
         echo "filename=$(grep -oP 'filename: \K.*' temp_output.txt)" >> $GITHUB_ENV
 
