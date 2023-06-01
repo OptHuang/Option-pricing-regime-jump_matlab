@@ -18,14 +18,16 @@ function test
 
 
 %     options.ifprint = "yes";
-    // Nt = 3000;
-    // Nx = 128;
-    // Compare_ErrTime(Nx,Nt,problem_paras,256,5)
+%     Nt = 3000;
+%     Nx = 128;
+%     Compare_ErrTime(Nx,Nt,problem_paras,256,5)
 
 
-%     Nx = 256;
-%     mesh_ratio = 5;
-%     [full_path,filename] = ComputeTrueSol(Nx,mesh_ratio,problem_paras)
+    Nx = 64;
+    mesh_ratio = 5;
+    [full_path, filename] = ComputeTrueSol(Nx, mesh_ratio, problem_paras);
+    fprintf('full_path: %s\n', full_path);
+    fprintf('filename: %s\n', filename);
 
 
 %     fixwhich = "ratio";
