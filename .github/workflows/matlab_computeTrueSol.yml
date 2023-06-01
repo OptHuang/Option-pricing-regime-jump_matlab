@@ -31,7 +31,7 @@ jobs:
           % Add MATLAB functions to path
           currentFolder = fileparts(which('ComputeTrueSol'));
           methodsFolder = fullfile(currentFolder, '..', 'methods');
-          addpath(methodsFolder); savepath;
+          addpath(methodsFolder);
 
           % Define problem parameters
           problem_paras.T = 1;
@@ -51,11 +51,19 @@ jobs:
           Nx = ${{ matrix.Nx }};
           mesh_ratio = ${{ matrix.mesh_ratio }};
           [full_path, filename] = ComputeTrueSol(Nx, mesh_ratio, problem_paras);
-          setOutput('full_path', full_path);
-          setOutput('filename', filename);
+          
+          % Output results
+          fprintf('full_path: %s\n', full_path);
+          fprintf('filename: %s\n', filename);
+
+    - name: Set outputs from MATLAB function
+      id: set-outputs
+      run: |
+        echo "::set-output name=full_path::$(echo '${{ steps.run-matlab-function.outputs.stdout }}' | grep -oP '(?<=full_path: ).*')"
+        echo "::set-output name=filename::$(echo '${{ steps.run-matlab-function.outputs.stdout }}' | grep -oP '(?<=filename: ).*')"
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
         name: results
-        path: ${{ steps.run-matlab-function.outputs.full_path }}/${{ steps.run-matlab-function.outputs.filename }}
+        path: ${{ steps.set-outputs.outputs.full_path }}/${{ steps.set-outputs.outputs.filename }}
