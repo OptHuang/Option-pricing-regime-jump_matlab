@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        type: ['Merton', 'Kou']
+        type: ['Merton']
         Nx: [256, 512]
-        mesh_ratio: [0.1, 0.2, 0.3]
+        mesh_ratio: [0.1, 0.2]
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
@@ -22,22 +22,42 @@ jobs:
 
     - name: Install epstopdf and ghostscript
       run: sudo apt-get update && sudo apt-get install -y texlive-font-utils ghostscript
-    
+
     - name: Set up MATLAB
       uses: matlab-actions/setup-matlab@v1
-    
-    - name: Add MATLAB functions to path
-      run: |
-        matlab -batch "currentFolder = fileparts(which('ComputeTrueSol')); methodsFolder = fullfile(currentFolder, '..', 'methods'); addpath(methodsFolder); savepath;"
-    
+
     - name: Run MATLAB Function
-      id: run-function
-      run: |
-        echo "::set-output name=file_path::$(matlab -batch "currentFolder = fileparts(which('ComputeTrueSol')); methodsFolder = fullfile(currentFolder, '..', 'methods'); addpath(methodsFolder); problem_paras.T = 1; problem_paras.K = 1; problem_paras.sig1 = 0.8; problem_paras.sig2 = 0.3; problem_paras.r1 = 0.05; problem_paras.r2 = 0.05; problem_paras.d1 = 0.025; problem_paras.d2 = 0.025; problem_paras.lam1 = 0.25; problem_paras.lam2 = 0.2; problem_paras.A = [-2 2; 3 -3]; problem_paras.type = '${{ matrix.type }}'; Nx = ${{ matrix.Nx }}; mesh_ratio = ${{ matrix.mesh_ratio }}; [full_path, filename] = ComputeTrueSol(Nx, mesh_ratio, problem_paras); disp(full_path)")"
-        echo "::set-output name=file_name::$(matlab -batch "currentFolder = fileparts(which('ComputeTrueSol')); methodsFolder = fullfile(currentFolder, '..', 'methods'); addpath(methodsFolder); problem_paras.T = 1; problem_paras.K = 1; problem_paras.sig1 = 0.8; problem_paras.sig2 = 0.3; problem_paras.r1 = 0.05; problem_paras.r2 = 0.05; problem_paras.d1 = 0.025; problem_paras.d2 = 0.025; problem_paras.lam1 = 0.25; problem_paras.lam2 = 0.2; problem_paras.A = [-2 2; 3 -3]; problem_paras.type = '${{ matrix.type }}'; Nx = ${{ matrix.Nx }}; mesh_ratio = ${{ matrix.mesh_ratio }}; [full_path, filename] = ComputeTrueSol(Nx, mesh_ratio, problem_paras); disp(filename)")"
-    
+      uses: matlab-actions/run-command@v1.2.0
+      with:
+        command: |
+          root_dir = pwd();
+
+          % Add MATLAB functions to path
+          currentFolder = fileparts(which('ComputeTrueSol'));
+          methodsFolder = fullfile(currentFolder, '..', 'methods');
+          addpath(methodsFolder); savepath;
+
+          % Define problem parameters
+          problem_paras.T = 1;
+          problem_paras.K = 1;
+          problem_paras.sig1 = 0.8;
+          problem_paras.sig2 = 0.3;
+          problem_paras.r1 = 0.05;
+          problem_paras.r2 = 0.05;
+          problem_paras.d1 = 0.025;
+          problem_paras.d2 = 0.025;
+          problem_paras.lam1 = 0.25;
+          problem_paras.lam2 = 0.2;
+          problem_paras.A = [-2 2; 3 -3];
+          problem_paras.type = '${{ matrix.type }}';
+
+          % Run ComputeTrueSol function
+          Nx = ${{ matrix.Nx }};
+          mesh_ratio = ${{ matrix.mesh_ratio }};
+          [full_path, filename] = ComputeTrueSol(Nx, mesh_ratio, problem_paras);
+
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ steps.run-function.outputs.file_name }}
-        path: ${{ steps.run-function.outputs.file_path }}
+        name: results
+        path: results/*.csv
