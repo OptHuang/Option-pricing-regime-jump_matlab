@@ -1,26 +1,58 @@
-name: Simple MATLAB Run
+name: Run MATLAB ComputeTrueSol
 
 on:
   push:
-  workflow_dispatch:
+    branches:
+      - master
 
 jobs:
-  test:
+  run-tests:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        type: ['Merton']
+        Nx: [256, 512]
+        mesh_ratio: [0.1, 0.2, 0.3]
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
+    - name: Check out repository
+      uses: actions/checkout@v2
 
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
-        with:
-          release: 'latest'
+    - name: Set up MATLAB
+      uses: matlab-actions/setup-matlab@v1
 
-      - name: Run MATLAB Script
-        uses: matlab-actions/run-command@v1.2.0
-        with:
-          command: |
-            % Your MATLAB code here
-            disp("Hello, World!");
-            
+    - name: Run MATLAB Function
+      id: run-matlab-function
+      uses: matlab-actions/run-command@v1.2.0
+      with:
+        command: |
+          % Add MATLAB functions to path
+          currentFolder = fileparts(which('ComputeTrueSol'));
+          methodsFolder = fullfile(currentFolder, '..', 'methods');
+          addpath(methodsFolder); savepath;
+
+          % Define problem parameters
+          problem_paras.T = 1;
+          problem_paras.K = 1;
+          problem_paras.sig1 = 0.8;
+          problem_paras.sig2 = 0.3;
+          problem_paras.r1 = 0.05;
+          problem_paras.r2 = 0.05;
+          problem_paras.d1 = 0.025;
+          problem_paras.d2 = 0.025;
+          problem_paras.lam1 = 0.25;
+          problem_paras.lam2 = 0.2;
+          problem_paras.A = [-2 2; 3 -3];
+          problem_paras.type = '${{ matrix.type }}';
+
+          % Run ComputeTrueSol function
+          Nx = ${{ matrix.Nx }};
+          mesh_ratio = ${{ matrix.mesh_ratio }};
+          [full_path, filename] = ComputeTrueSol(Nx, mesh_ratio, problem_paras);
+          setOutput('full_path', full_path);
+          setOutput('filename', filename);
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: results
+        path: ${{ steps.run-matlab-function.outputs.full_path }}/${{ steps.run-matlab-function.outputs.filename }}
