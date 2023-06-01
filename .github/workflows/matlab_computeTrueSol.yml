@@ -16,6 +16,12 @@ jobs:
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
+
+    - name: Link gfortran for MATLAB on Linux
+      run: sudo ln -s /usr/bin/gfortran-9 /usr/local/bin/gfortran
+
+    - name: Install epstopdf and ghostscript
+      run: sudo apt-get update && sudo apt-get install -y texlive-font-utils ghostscript
     
     - name: Set up MATLAB
       uses: matlab-actions/setup-matlab@v1
