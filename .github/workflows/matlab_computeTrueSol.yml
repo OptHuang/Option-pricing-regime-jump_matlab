@@ -61,12 +61,10 @@ jobs:
       run: |
         echo "MATLAB function output:"
         echo "${{ steps.run-matlab-function.outputs.stdout }}"
-        echo "Extracting full_path..."
-        echo "$(echo '${{ steps.run-matlab-function.outputs.stdout }}' | grep 'full_path')"
-        echo "full_path=$(echo '${{ steps.run-matlab-function.outputs.stdout }}' | grep -oP 'full_path: \K.*')" >> $GITHUB_ENV
-        echo "Extracting filename..."
-        echo "$(echo '${{ steps.run-matlab-function.outputs.stdout }}' | grep 'filename')"
-        echo "filename=$(echo '${{ steps.run-matlab-function.outputs.stdout }}' | grep -oP 'filename: \K.*')" >> $GITHUB_ENV
+        echo "MATLAB function error output:"
+        echo "${{ steps.run-matlab-function.outputs.stderr }}"
+        echo "full_path=$(echo '${{ steps.run-matlab-function.outputs.stdout }}${{ steps.run-matlab-function.outputs.stderr }}' | grep -oP 'full_path: \K.*')" >> $GITHUB_ENV
+        echo "filename=$(echo '${{ steps.run-matlab-function.outputs.stdout }}${{ steps.run-matlab-function.outputs.stderr }}' | grep -oP 'filename: \K.*')" >> $GITHUB_ENV
 
     - name: Debug environment variables
       run: |
