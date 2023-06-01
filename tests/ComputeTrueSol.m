@@ -29,8 +29,12 @@ function [full_path,filename] = ComputeTrueSol(Nx,mesh_ratio,problem_paras,optio
     
     % Construct the desired destination folder path
     destination_folder = fullfile(currentFolder, '..', 'data_TrueSol');
+
     filename = sprintf('type=%s_ratio=%.2f_Nx=%d_Nt=%d_d=%.3f_lam1=%.2f_lam2=%.2f.mat',...
         problem_paras.type, mesh_ratio, Nx, Nt, problem_paras.d1, problem_paras.lam1, problem_paras.lam2);
+    [filepath, name, ext] = fileparts(filename);
+    name = strrep(name, '.', '-'); % Changes "." to "-".
+    filename = fullfile(filepath, [name ext]);
     full_path = fullfile(destination_folder, filename);
     save(full_path,'TrueSol_last_row1','TrueSol_last_row2')
 end
