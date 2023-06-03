@@ -19,13 +19,12 @@ function Plot3D(method,Nx,Nt,problem_paras,options)
             end
     end
 
-    full_matrix1 = [problem_paras.K*ones(Nt+1,1), full_matrix1];
-    full_matrix2 = [problem_paras.K*ones(Nt+1,1), full_matrix2];
+    full_matrix1 = [problem_paras.K*ones(n)]
     
     t = linspace(0,problem_paras.T,Nt+1);
     x = linspace(-L,L,Nx+1); 
+    x = [0, x];
     s = exp(x);
-    s = [0, s];
     [S,M] = meshgrid(s,t);
 
     full_matrix1 = flipud(full_matrix1);
@@ -37,9 +36,9 @@ function Plot3D(method,Nx,Nt,problem_paras,options)
     mesh(S,M,full_matrix1)
     hold on
     plot3(problem_paras.K-fb1,t,fb1,'k-','LineWidth',3)
-%     hold on
-%     plot3(problem_paras.K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
-    axis([0 exp(L) 0 problem_paras.T 0 problem_paras.K])
+    hold on
+    plot3(problem_paras.K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
+    axis([0 1.2*exp(L) 0 problem_paras.T 0 1.2*problem_paras.K])
     xlabel('S')
     ylabel('T')
     zlabel('P')
@@ -54,9 +53,9 @@ function Plot3D(method,Nx,Nt,problem_paras,options)
     mesh(S,M,full_matrix2)
     hold on
     plot3(problem_paras.K-fb2,t,fb2,'k-','LineWidth',3)
-%     hold on
-%     plot3(problem_paras.K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
-    axis([0 exp(L) 0 problem_paras.T 0 problem_paras.K])
+    hold on
+    plot3(problem_paras.K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
+    axis([0 1.2*exp(L) 0 problem_paras.T 0 1.2*problem_paras.K])
     xlabel('S')
     ylabel('T')
     zlabel('P')

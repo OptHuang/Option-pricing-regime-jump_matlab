@@ -1,3 +1,5 @@
+# This script has a bug. Don't use!
+
 import os
 import requests
 from github import Github

@@ -72,8 +72,8 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
                 len_xlabel = max_xlabel - min_xlabel;
                 left_xlabel = -0.1*len_xlabel + min_xlabel;
                 right_xlabel = 0.1*len_xlabel + max_xlabel;
-                shift1 = Standard(1) -1.5 - log(Error1(1));
-                shift2 = Standard(1) -2*1.5 - log(Error2(1));
+                shift1 = Standard(1) -1.5 - log(Error1);
+                shift2 = Standard(1) -2*1.5 - log(Error2);
                 max_ylabel = max(Standard);
                 min_ylabel = min(log(Error2) + shift2);
                 len_ylabel = max_ylabel - min_ylabel;
@@ -125,12 +125,13 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
                 Standard = -k*log(N0)+1;
 
                 max_xlabel = max(log(N0));
+                max_xlabel = max(log(N0));
                 min_xlabel = min(log(N0));
                 len_xlabel = max_xlabel - min_xlabel;
                 left_xlabel = -0.1*len_xlabel + min_xlabel;
                 right_xlabel = 0.1*len_xlabel + max_xlabel;
-                shift1 = Standard(1) -1.5 - log(Error1(1));
-                shift2 = Standard(1) -2*1.5 - log(Error2(1));
+                shift1 = Standard(1) -1.5 - log(Error1);
+                shift2 = Standard(1) -2*1.5 - log(Error2);
                 max_ylabel = max(Standard);
                 min_ylabel = min(log(Error2) + shift2);
                 len_ylabel = max_ylabel - min_ylabel;
@@ -201,15 +202,13 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
                 len_xlabel = max_xlabel - min_xlabel;
                 left_xlabel = -0.1*len_xlabel + min_xlabel;
                 right_xlabel = 0.1*len_xlabel + max_xlabel;
-                shift1 = Standard(1) -1.5 - log(Error1(1));
-                shift2 = Standard(1) -2*1.5 - log(Error2(1));
-                max_ylabel = max(Standard);
-                min_ylabel = min(log(Error2) + shift2);
+                max_ylabel = max([max(Standard), max(log(Error1)), max(log(Error2))]);
+                min_ylabel = min([min(Standard), min(log(Error1)), min(log(Error2))]);
                 len_ylabel = max_ylabel - min_ylabel;
                 lower_ylabel = -0.1*len_ylabel + min_ylabel;
                 upper_ylabel = 0.1*len_ylabel + max_ylabel;
     
-                plot(log(N0),Standard,'-b',log(N0),log(Error1)+shift1,'-ro',log(N0),log(Error2)+shift2,'-g*')
+                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2),'-g*')
                 xlabel('$\log(N_x)$','Interpreter','latex','FontSize',16)
                 ylabel('log(error)','Interpreter','latex','FontSize',16)
                 axis([left_xlabel, right_xlabel, lower_ylabel, upper_ylabel])
@@ -254,15 +253,13 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
                 len_xlabel = max_xlabel - min_xlabel;
                 left_xlabel = -0.1*len_xlabel + min_xlabel;
                 right_xlabel = 0.1*len_xlabel + max_xlabel;
-                shift1 = Standard(1) -1.5 - log(Error1(1));
-                shift2 = Standard(1) -2*1.5 - log(Error2(1));
-                max_ylabel = max(Standard);
-                min_ylabel = min(log(Error2) + shift2);
+                max_ylabel = max([max(Standard), max(log(Error1)), max(log(Error2))]);
+                min_ylabel = min([min(Standard), min(log(Error1)), min(log(Error2))]);
                 len_ylabel = max_ylabel - min_ylabel;
                 lower_ylabel = -0.1*len_ylabel + min_ylabel;
                 upper_ylabel = 0.1*len_ylabel + max_ylabel;
     
-                plot(log(N0),Standard,'-b',log(N0),log(Error1)+shift1,'-ro',log(N0),log(Error2)+shift2,'-g*')
+                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2),'-g*')
                 xlabel('$\log(N_t)$','Interpreter','latex','FontSize',16)
                 ylabel('log(error)','Interpreter','latex','FontSize',16)
                 axis([left_xlabel, right_xlabel, lower_ylabel, upper_ylabel])
@@ -311,15 +308,13 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
                 len_xlabel = max_xlabel - min_xlabel;
                 left_xlabel = -0.1*len_xlabel + min_xlabel;
                 right_xlabel = 0.1*len_xlabel + max_xlabel;
-                shift1 = Standard(1) -1.5 - log(Error1(1));
-                shift2 = Standard(1) -2*1.5 - log(Error2(1));
-                max_ylabel = max(Standard);
-                min_ylabel = min(log(Error2) + shift2);
+                max_ylabel = max([max(Standard), max(log(Error1)), max(log(Error2))]);
+                min_ylabel = min([min(Standard), min(log(Error1)), min(log(Error2))]);
                 len_ylabel = max_ylabel - min_ylabel;
                 lower_ylabel = -0.1*len_ylabel + min_ylabel;
                 upper_ylabel = 0.1*len_ylabel + max_ylabel;
     
-                plot(log(N0),Standard,'-b',log(N0),log(Error1)+shift1,'-ro',log(N0),log(Error2)+shift2,'-g*')
+                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2),'-g*')
                 xlabel('$\log(N_x)$','Interpreter','latex','FontSize',16)
                 ylabel('log(error)','Interpreter','latex','FontSize',16)
                 axis([left_xlabel, right_xlabel, lower_ylabel, upper_ylabel])
@@ -383,15 +378,13 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
                 len_xlabel = max_xlabel - min_xlabel;
                 left_xlabel = -0.1*len_xlabel + min_xlabel;
                 right_xlabel = 0.1*len_xlabel + max_xlabel;
-                shift1 = Standard(1) -1.5 - log(Error1(1));
-                shift2 = Standard(1) -2*1.5 - log(Error2(1));
-                max_ylabel = max(Standard);
-                min_ylabel = min(log(Error2) + shift2);
+                max_ylabel = max([max(Standard), max(log(Error1)), max(log(Error2))]);
+                min_ylabel = min([min(Standard), min(log(Error1)), min(log(Error2))]);
                 len_ylabel = max_ylabel - min_ylabel;
                 lower_ylabel = -0.1*len_ylabel + min_ylabel;
                 upper_ylabel = 0.1*len_ylabel + max_ylabel;
     
-                plot(log(N0),Standard,'-b',log(N0),log(Error1)+shift1,'-ro',log(N0),log(Error2)+shift2,'-g*')
+                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2),'-g*')
                 xlabel('$\log(N_x)$','Interpreter','latex','FontSize',16)
                 ylabel('log(error)','Interpreter','latex','FontSize',16)
                 axis([left_xlabel, right_xlabel, lower_ylabel, upper_ylabel])
@@ -404,5 +397,10 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
                 end
         end
     end
+    
+
+
+
+
 
 end
