@@ -14,7 +14,7 @@ function test
     problem_paras.lam1 = 0.25;
     problem_paras.lam2 = 0.2;
     problem_paras.A = [-2 2; 3 -3];
-    problem_paras.type = "Merton";
+    problem_paras.type = "Kou";
 
 
 %     options.ifprint = "yes";
@@ -23,15 +23,44 @@ function test
 %     Compare_ErrTime(Nx,Nt,problem_paras,64,5)
 
 
-    Nx = 512;
-    mesh_ratio = 5;
-    [full_path, filename] = ComputeTrueSol(Nx, mesh_ratio, problem_paras);
-    fprintf('full_path: %s\n', full_path);
-    fprintf('filename: %s\n', filename);
 
 
-%     fixwhich = "ratio";
-%     options.pcm_eps = 1e-7;
-%     ErrorOrder(fixwhich,3,problem_paras,128,5,options)
+%     switch problem_paras.type
+%         case {"Merton"}
+%             L = TruncationTech(problem_paras.K,0,problem_paras.sig1,...
+%                 problem_paras.sig2,problem_paras.r1,problem_paras.r2,...
+%                 problem_paras.d1,problem_paras.d2,problem_paras.lam1,...
+%                 problem_paras.lam2,problem_paras.A);
+%         case {"Kou"}
+%             L = TruncationTech(problem_paras.K,1,problem_paras.sig1,...
+%                 problem_paras.sig2,problem_paras.r1,problem_paras.r2,...
+%                 problem_paras.d1,problem_paras.d2,problem_paras.lam1,...
+%                 problem_paras.lam2,problem_paras.A);
+%     end
+%     Kou_Err_Time_vec = zeros(4,15);
+%     Merton_Err_Time_vec = zeros(4,15);
+%     Mesh_vec = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 2, 3, 4, 5, 6];
+%     Nx = 512;
+% 
+%     for i = 1:15
+%         mesh_ratio_true = Mesh_vec(i);
+%         Nt = round(problem_paras.T / ((2*L/Nx)^2/mesh_ratio_true));
+%         [Kou_Err_Time_vec(1,i), Kou_Err_Time_vec(3,i), Kou_Err_Time_vec(2,i),...
+%             Kou_Err_Time_vec(4,i)] = Compare_ErrTime(Nx,Nt,problem_paras,1024,mesh_ratio_true);
+%     end
+
+
+    
+
+
+%     Nx = 512;
+%     mesh_ratio = 5;
+%     [full_path, filename] = ComputeTrueSol(Nx, mesh_ratio, problem_paras);
+%     fprintf('full_path: %s\n', full_path);
+%     fprintf('filename: %s\n', filename);
+
+
+    fixwhich = "temporal";
+    ErrorOrder(fixwhich,7,problem_paras,512,9)
 
 end

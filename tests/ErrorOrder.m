@@ -35,6 +35,15 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
     tokens = regexp(files(1).name, pattern, 'names');
     Nt_true = str2double(tokens.Nt);
 
+
+
+%     load("Vkoutrue10000512.mat")
+%     Nt_true = 10000;
+%     TrueSol_last_row1 = Vkoutrue1(end,:);
+%     TrueSol_last_row2 = Vkoutrue2(end,:);
+
+
+
     Error1 = zeros(1,npoint);
     Error2 = zeros(1,npoint);
     N0 = zeros(1,npoint);
@@ -67,10 +76,21 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
                 k = 1;
                 Standard = -k*log(N0)+1;
     
-                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2)-1,'-g*')
+                max_xlabel = max(log(N0));
+                min_xlabel = min(log(N0));
+                len_xlabel = max_xlabel - min_xlabel;
+                left_xlabel = -0.1*len_xlabel + min_xlabel;
+                right_xlabel = 0.1*len_xlabel + max_xlabel;
+                max_ylabel = max([max(Standard), max(log(Error1)), max(log(Error2))]);
+                min_ylabel = min([min(Standard), min(log(Error1)), min(log(Error2))]);
+                len_ylabel = max_ylabel - min_ylabel;
+                lower_ylabel = -0.1*len_ylabel + min_ylabel;
+                upper_ylabel = 0.1*len_ylabel + max_ylabel;
+
+                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2),'-g*')
                 xlabel('$\log(N_t)$','Interpreter','latex','FontSize',16)
                 ylabel('log(error)','Interpreter','latex','FontSize',16)
-                axis([5.5,9.5,-11,-5])
+                axis([left_xlabel, right_xlabel, lower_ylabel, upper_ylabel])
                 legend('order 1','log(error)--regime 1','log(error)--regime 2','Interpreter','latex','FontSize',12)
                 switch problem_paras.type
                     case {"Merton"}
@@ -110,11 +130,22 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
             
                 k = 2;
                 Standard = -k*log(N0)+1;
+
+                max_xlabel = max(log(N0));
+                min_xlabel = min(log(N0));
+                len_xlabel = max_xlabel - min_xlabel;
+                left_xlabel = -0.1*len_xlabel + min_xlabel;
+                right_xlabel = 0.1*len_xlabel + max_xlabel;
+                max_ylabel = max([max(Standard), max(log(Error1)), max(log(Error2))]);
+                min_ylabel = min([min(Standard), min(log(Error1)), min(log(Error2))]);
+                len_ylabel = max_ylabel - min_ylabel;
+                lower_ylabel = -0.1*len_ylabel + min_ylabel;
+                upper_ylabel = 0.1*len_ylabel + max_ylabel;
     
-                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2)-1,'-g*')
+                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2),'-g*')
                 xlabel('$\log(N_x)$','Interpreter','latex','FontSize',16)
                 ylabel('log(error)','Interpreter','latex','FontSize',16)
-                axis([1.3,4.2,-9.2,-1.7])
+                axis([left_xlabel, right_xlabel, lower_ylabel, upper_ylabel])
                 legend('order 2','log(error)--regime 1','log(error)--regime 2','Interpreter','latex','FontSize',12)
                 switch problem_paras.type
                     case {"Merton"}
@@ -169,11 +200,22 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
             
                 k = 2;
                 Standard = -k*log(N0)+1;
+
+                max_xlabel = max(log(N0));
+                min_xlabel = min(log(N0));
+                len_xlabel = max_xlabel - min_xlabel;
+                left_xlabel = -0.1*len_xlabel + min_xlabel;
+                right_xlabel = 0.1*len_xlabel + max_xlabel;
+                max_ylabel = max([max(Standard), max(log(Error1)), max(log(Error2))]);
+                min_ylabel = min([min(Standard), min(log(Error1)), min(log(Error2))]);
+                len_ylabel = max_ylabel - min_ylabel;
+                lower_ylabel = -0.1*len_ylabel + min_ylabel;
+                upper_ylabel = 0.1*len_ylabel + max_ylabel;
     
-                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2)-1,'-g*')
+                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2),'-g*')
                 xlabel('$\log(N_x)$','Interpreter','latex','FontSize',16)
                 ylabel('log(error)','Interpreter','latex','FontSize',16)
-                axis([1.3,4.2,-9.2,-1.7])
+                axis([left_xlabel, right_xlabel, lower_ylabel, upper_ylabel])
                 legend('order 2','log(error)--regime 1','log(error)--regime 2','Interpreter','latex','FontSize',12)
                 switch problem_paras.type
                     case {"Merton"}
@@ -209,11 +251,22 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
             
                 k = 1;
                 Standard = -k*log(N0)+1;
+
+                max_xlabel = max(log(N0));
+                min_xlabel = min(log(N0));
+                len_xlabel = max_xlabel - min_xlabel;
+                left_xlabel = -0.1*len_xlabel + min_xlabel;
+                right_xlabel = 0.1*len_xlabel + max_xlabel;
+                max_ylabel = max([max(Standard), max(log(Error1)), max(log(Error2))]);
+                min_ylabel = min([min(Standard), min(log(Error1)), min(log(Error2))]);
+                len_ylabel = max_ylabel - min_ylabel;
+                lower_ylabel = -0.1*len_ylabel + min_ylabel;
+                upper_ylabel = 0.1*len_ylabel + max_ylabel;
     
-                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2)-1,'-g*')
+                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2),'-g*')
                 xlabel('$\log(N_t)$','Interpreter','latex','FontSize',16)
                 ylabel('log(error)','Interpreter','latex','FontSize',16)
-                axis([5.5,9.5,-11,-5])
+                axis([left_xlabel, right_xlabel, lower_ylabel, upper_ylabel])
                 legend('order 1','log(error)--regime 1','log(error)--regime 2','Interpreter','latex','FontSize',12)
                 switch problem_paras.type
                     case {"Merton"}
@@ -253,11 +306,22 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
             
                 k = 2;
                 Standard = -k*log(N0)+1;
+
+                max_xlabel = max(log(N0));
+                min_xlabel = min(log(N0));
+                len_xlabel = max_xlabel - min_xlabel;
+                left_xlabel = -0.1*len_xlabel + min_xlabel;
+                right_xlabel = 0.1*len_xlabel + max_xlabel;
+                max_ylabel = max([max(Standard), max(log(Error1)), max(log(Error2))]);
+                min_ylabel = min([min(Standard), min(log(Error1)), min(log(Error2))]);
+                len_ylabel = max_ylabel - min_ylabel;
+                lower_ylabel = -0.1*len_ylabel + min_ylabel;
+                upper_ylabel = 0.1*len_ylabel + max_ylabel;
     
-                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2)-1,'-g*')
+                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2),'-g*')
                 xlabel('$\log(N_x)$','Interpreter','latex','FontSize',16)
                 ylabel('log(error)','Interpreter','latex','FontSize',16)
-                axis([1.3,4.2,-9.2,-1.7])
+                axis([left_xlabel, right_xlabel, lower_ylabel, upper_ylabel])
                 legend('order 2','log(error)--regime 1','log(error)--regime 2','Interpreter','latex','FontSize',12)
                 switch problem_paras.type
                     case {"Merton"}
@@ -312,11 +376,22 @@ function ErrorOrder(fixwhich,npoint,problem_paras,Nx_true,mesh_ratio_true,option
             
                 k = 2;
                 Standard = -k*log(N0)+1;
+
+                max_xlabel = max(log(N0));
+                min_xlabel = min(log(N0));
+                len_xlabel = max_xlabel - min_xlabel;
+                left_xlabel = -0.1*len_xlabel + min_xlabel;
+                right_xlabel = 0.1*len_xlabel + max_xlabel;
+                max_ylabel = max([max(Standard), max(log(Error1)), max(log(Error2))]);
+                min_ylabel = min([min(Standard), min(log(Error1)), min(log(Error2))]);
+                len_ylabel = max_ylabel - min_ylabel;
+                lower_ylabel = -0.1*len_ylabel + min_ylabel;
+                upper_ylabel = 0.1*len_ylabel + max_ylabel;
     
-                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2)-1,'-g*')
+                plot(log(N0),Standard,'-b',log(N0),log(Error1),'-ro',log(N0),log(Error2),'-g*')
                 xlabel('$\log(N_x)$','Interpreter','latex','FontSize',16)
                 ylabel('log(error)','Interpreter','latex','FontSize',16)
-                axis([1.3,4.2,-9.2,-1.7])
+                axis([left_xlabel, right_xlabel, lower_ylabel, upper_ylabel])
                 legend('order 2','log(error)--regime 1','log(error)--regime 2','Interpreter','latex','FontSize',12)
                 switch problem_paras.type
                     case {"Merton"}

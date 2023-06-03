@@ -3,7 +3,7 @@ import requests
 from github import Github
 
 # Set your GitHub token and repository details
-GITHUB_TOKEN = "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"
+GITHUB_TOKEN = "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"
 REPO_OWNER = "OptHuang"
 REPO_NAME = "Option-pricing-regime-jump_matlab"
 WORKFLOW_RUN_ID = 5148212386  # Replace with the desired workflow run ID
@@ -23,6 +23,7 @@ file_path = os.path.dirname(os.path.abspath(__file__))
 for artifact in artifacts:
     response = requests.get(artifact.archive_download_url, headers={"Authorization": f"token {GITHUB_TOKEN}"})
     
+    # Save the .mat file as binary
     with open(os.path.join(file_path, artifact.name), "wb") as f:
         f.write(response.content)
 

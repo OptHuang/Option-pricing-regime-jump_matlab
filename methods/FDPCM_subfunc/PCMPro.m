@@ -15,7 +15,7 @@ function Phi_end = PCMPro(eps,nu,mu,vrho,M,F,Phi_start)
     k = 0;
     F_u = M'*Phi+F;
     tol = norm(Phi-max(Phi-F_u,zeros(len,1)),inf);
-    while (tol>eps&&k<5000)
+    while (tol>eps&&k<10000)
         % ͶӰ
         Phi_mid = Phi;
         F_u_mid = F_u;

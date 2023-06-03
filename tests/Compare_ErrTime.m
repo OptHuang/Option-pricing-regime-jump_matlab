@@ -1,4 +1,4 @@
-function Compare_ErrTime(Nx,Nt,problem_paras,Nx_true,mesh_ratio_true,options)
+function [err_pcm, time_pcm, err_rbf, time_rbf] = Compare_ErrTime(Nx,Nt,problem_paras,Nx_true,mesh_ratio_true,options)
 
     currentFolder = fileparts(mfilename('fullpath'));
     testSubFolder = fullfile(currentFolder, '..', 'methods');
