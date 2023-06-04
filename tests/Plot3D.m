@@ -40,14 +40,14 @@ function Plot3D(method,Nx,Nt,problem_paras,options)
 %     hold on
 %     plot3(problem_paras.K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
     axis([0 exp(L) 0 problem_paras.T 0 problem_paras.K])
-    xlabel('S')
-    ylabel('T')
-    zlabel('P')
+    xlabel('$S$','Interpreter','latex','FontSize',10)
+    ylabel('$T$','Interpreter','latex','FontSize',10)
+    zlabel('$P$','Interpreter','latex','FontSize',10)
     switch problem_paras.type
         case {"Merton"}
-            title('Example1: option value under regime 1')
+            title('Option price under regime 1 in Example 1','Interpreter','latex','FontSize',12)
         case {"Kou"}
-            title('Example2: option value under regime 1')
+            title('Option price under regime 1 in Example 2','Interpreter','latex','FontSize',12)
     end
     
     subplot(1,2,2)
@@ -57,15 +57,14 @@ function Plot3D(method,Nx,Nt,problem_paras,options)
 %     hold on
 %     plot3(problem_paras.K-fb1,t,zeros(size(t)),'k-','LineWidth',3)
     axis([0 exp(L) 0 problem_paras.T 0 problem_paras.K])
-    xlabel('S')
-    ylabel('T')
-    zlabel('P')
+    xlabel('$S$','Interpreter','latex','FontSize',10)
+    ylabel('$T$','Interpreter','latex','FontSize',10)
+    zlabel('$P$','Interpreter','latex','FontSize',10)
     switch problem_paras.type
         case {"Merton"}
-            title('Example1: option value under regime 2')
+            title('Option price under regime 2 in Example 1','Interpreter','latex','FontSize',12)
         case {"Kou"}
-            title('Example2: option value under regime 2')
+            title('Option price under regime 2 in Example 2','Interpreter','latex','FontSize',12)
     end
-    
-            
+              
 end

@@ -16,33 +16,33 @@ function test
     problem_paras.A = [-2 2; 3 -3];
     
 
-    problem_paras.type = "Merton9;
+    problem_paras.type = "Merton";
 
 
 %     Plot2D_compare(256,500,problem_paras)
 
-%     Plot3D("FDPCM",256,1000,problem_paras)
+    Plot3D("FDPCM",256,1000,problem_paras)
 
 
 
 %     options.ifprint = "yes";
 
-    TruncationTechFolder = fullfile(currentFolder, '..', 'methods/FDPCM_subfunc');
-    addpath(TruncationTechFolder);
-    switch problem_paras.type
-        case {"Merton"}
-            L = TruncationTech(problem_paras.K,0,problem_paras.sig1,...
-                problem_paras.sig2,problem_paras.r1,problem_paras.r2,...
-                problem_paras.d1,problem_paras.d2,problem_paras.lam1,...
-                problem_paras.lam2,problem_paras.A);
-        case {"Kou"}
-            L = TruncationTech(problem_paras.K,1,problem_paras.sig1,...
-                problem_paras.sig2,problem_paras.r1,problem_paras.r2,...
-                problem_paras.d1,problem_paras.d2,problem_paras.lam1,...
-                problem_paras.lam2,problem_paras.A);
-    end
-    Nx = 256;
-    Nt = round(problem_paras.T / ((2*L/Nx)^2/0.8))
+%     TruncationTechFolder = fullfile(currentFolder, '..', 'methods/FDPCM_subfunc');
+%     addpath(TruncationTechFolder);
+%     switch problem_paras.type
+%         case {"Merton"}
+%             L = TruncationTech(problem_paras.K,0,problem_paras.sig1,...
+%                 problem_paras.sig2,problem_paras.r1,problem_paras.r2,...
+%                 problem_paras.d1,problem_paras.d2,problem_paras.lam1,...
+%                 problem_paras.lam2,problem_paras.A);
+%         case {"Kou"}
+%             L = TruncationTech(problem_paras.K,1,problem_paras.sig1,...
+%                 problem_paras.sig2,problem_paras.r1,problem_paras.r2,...
+%                 problem_paras.d1,problem_paras.d2,problem_paras.lam1,...
+%                 problem_paras.lam2,problem_paras.A);
+%     end
+%     Nx = 256;
+%     Nt = round(problem_paras.T / ((2*L/Nx)^2/0.8))
 %     Compare_ErrTime(Nx,Nt,problem_paras,1024,0.8)
 
 
@@ -88,6 +88,6 @@ function test
 %     ErrorOrder(fixwhich,4,problem_paras,1024,0.8)
     
 
-    Plot_Freeboundaries(256,1000,problem_paras)
+%     Plot_Freeboundaries(256,1000,problem_paras)
 
 end
