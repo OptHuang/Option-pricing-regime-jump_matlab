@@ -1,5 +1,5 @@
 function [p,q,a1,a2,kappaK,nK1,nK2,mK1,mK2] = Koupara(sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A)
-    % 输入Kou型参数
+    % Input Kou model parameters
     
     p = 0.3445;  
     q = 1-p;

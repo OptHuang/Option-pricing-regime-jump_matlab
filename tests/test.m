@@ -21,7 +21,7 @@ function test
 
 %     Plot2D_compare(256,500,problem_paras)
 
-    Plot3D("FDPCM",256,1000,problem_paras)
+    Plot3D("FDPCM",64,1000,problem_paras)
 
 
 

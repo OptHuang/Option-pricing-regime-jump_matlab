@@ -1,7 +1,7 @@
 function val = h(qp,j,k,nK,dx,p,q,a1,a2)
-    % 计算Kou型中的Qi*hij^Q(k)或Pi*hij^P(k)的值
-    % qp:0表示Q,1表示P
-    % n对应region输入n1或n2
+    % Calculate the value of Qihij^Q(k) or Pihij^P(k) in Kou type model
+    % qp: 0 represents Q, 1 represents P
+    % n corresponds to region input n1 or n2
     
     switch qp
         case 0

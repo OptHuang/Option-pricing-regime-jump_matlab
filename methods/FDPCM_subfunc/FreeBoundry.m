@@ -1,6 +1,4 @@
 function [fb1_num,fb2_num,fb1,fb2] = FreeBoundry(Utrue1,Utrue2,K,L,Nx,Nt)
-    % 返回的是一个向量
-    % 每一个分量表示自由边界在对应时间层在Utrue中的位置
     
     fb1_num = zeros(Nt+1,1);
     fb2_num = zeros(Nt+1,1);

@@ -1,5 +1,4 @@
 function x_star = Newton_perMerton(max_iter,eps,sigma,r,d,lam,kappaM,mu,delt)
-    % 牛顿求根法求永久美式跳扩散的最佳实施边界 (Merton)
     
    x0 = -1;
    [y,deriv_y] = Merton_func(sigma,r,d,lam,kappaM,mu,delt,x0);

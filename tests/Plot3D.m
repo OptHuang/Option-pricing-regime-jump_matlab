@@ -45,9 +45,9 @@ function Plot3D(method,Nx,Nt,problem_paras,options)
     zlabel('$P$','Interpreter','latex','FontSize',10)
     switch problem_paras.type
         case {"Merton"}
-            title('Option price under regime 1 in Example 1','Interpreter','latex','FontSize',12)
+            title('Option price under regime 1 in Example 1','Interpreter','latex','FontSize',10)
         case {"Kou"}
-            title('Option price under regime 1 in Example 2','Interpreter','latex','FontSize',12)
+            title('Option price under regime 1 in Example 2','Interpreter','latex','FontSize',10)
     end
     
     subplot(1,2,2)
@@ -62,9 +62,9 @@ function Plot3D(method,Nx,Nt,problem_paras,options)
     zlabel('$P$','Interpreter','latex','FontSize',10)
     switch problem_paras.type
         case {"Merton"}
-            title('Option price under regime 2 in Example 1','Interpreter','latex','FontSize',12)
+            title('Option price under regime 2 in Example 1','Interpreter','latex','FontSize',10)
         case {"Kou"}
-            title('Option price under regime 2 in Example 2','Interpreter','latex','FontSize',12)
+            title('Option price under regime 2 in Example 2','Interpreter','latex','FontSize',10)
     end
               
 end

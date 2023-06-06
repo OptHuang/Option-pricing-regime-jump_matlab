@@ -1,12 +1,12 @@
 function Phi_end = PCMPro(eps,nu,mu,vrho,M,F,Phi_start)
-    % pcm算法核心程序
+    % Core program of the pcm algorithm
 
-    % Nx是空间方向剖分段数
-    % eps是终止迭代误差
-    % nu、mu、vrho是给定的(0,1)之间的系数
-    % M是给定的(2Nx-2)*(2Nx-2)的系数矩阵
-    % F是给定的(2Nx-2)*1的列向量
-    % Phi_start是该步迭代的初始值
+    % Nx is the number of space direction partitions
+    % eps is the termination iteration error
+    % nu, mu, vrho are the given coefficients between (0, 1)
+    % M is the given (2Nx-2)*(2Nx-2) coefficient matrix
+    % F is the given (2Nx-2)*1 column vector
+    % Phi_start is the initial value for this iteration step
     
     len = size(F,1);
     Phi = Phi_start;
@@ -16,11 +16,11 @@ function Phi_end = PCMPro(eps,nu,mu,vrho,M,F,Phi_start)
     F_u = M'*Phi+F;
     tol = norm(Phi-max(Phi-F_u,zeros(len,1)),inf);
     while (tol>eps&&k<10000)
-        % 投影
+        % Projection
         Phi_mid = Phi;
         F_u_mid = F_u;
         Phi = max(Phi_mid-beta.*F_u_mid,0);
-        % 可行方向
+        % Feasible direction
         F_u = M'*Phi+F;
         du = Phi_mid-Phi;
         dF = beta.*(F_u_mid-F_u);

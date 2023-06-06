@@ -1,12 +1,12 @@
 function [V1,V2] = RevValueMerton(n,Nx,Phi_cur,Phi_star,mM1,mM2,nM1,nM2,t0,x0,dt,dx)
-    % 这个子函数用于将pcm算法求得的第n+1层的解还原成所需要的函数V所对应各点的值
+    % This subfunction is used to restore the solution of the n+1 layer obtained by the pcm algorithm to the values of the corresponding points of the required function V
     
-    % n是指在时间分划第n层，Nx是空间分划段数
-    % Phi_cur是pcm直接求得的(2Nx-2)*1的列向量
-    % G是该层对应的(2Nx-2)*1的列向量
-    % V1,V2就是制度1,2下分别对应的Value函数在所取的点处的值
-    % mM1,mM2,nM1,nM2是AssembleMatrix计算出来的转化中的参数
-    % t0,x0,dt,dx分别是时间起点，空间起点，时间分划每段长度，空间分划每段长度
+    % n refers to the nth layer in the time partition, Nx is the number of space partition segments
+    % Phi_cur is the (2Nx-2)*1 column vector obtained directly by pcm
+    % G is the corresponding (2Nx-2)*1 column vector for this layer
+    % V1, V2 are the values of the Value function under regimes 1 and 2 at the selected points
+    % mM1, mM2, nM1, nM2 are the parameters in the transformation calculated by AssembleMatrix
+    % t0, x0, dt, dx are the starting point of time, the starting point of space, the length of each segment of the time partition, and the length of each segment of the space partition
     
     Phi = Phi_cur+Phi_star;
     W1 = Phi(1:Nx-1);

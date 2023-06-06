@@ -1,5 +1,5 @@
 function [mu,delt,kappaM,nM1,nM2,mM1,mM2,mu_star1,mu_star2,C1,C2] = Mertonpara(sigma1,sigma2,r1,r2,d1,d2,lam1,lam2,A)
-    % Merton型的参数
+    % Input Merton model parameters
     
     mu = -0.025;
     delt = sqrt(0.05);  

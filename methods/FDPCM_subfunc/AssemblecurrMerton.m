@@ -1,6 +1,6 @@
 function [F, Phi_star] = AssemblecurrMerton(n,dt,Nx,mM1,mM2,lam1,lam2,Phi_pre,Merton1,Merton2,B,d1t0,d2t0,F0t0,Phi_star_t0)
 
-    %%%%%%%%%%%%%%形成向量F, F=F0+(A-R)*Phi(n)+B*Phi_star
+    %%%%%%%%%%%%%% Formation of vector F, F=F0+(A-R)Phi(n)+BPhi_star
     F = zeros(2*Nx-2,1);
     
     % Phi_star
