@@ -1,1 +1,1 @@
-This repository contains the corresponding codes for the numerical experiments in the paper ["Error analysis of finite difference scheme for American option pricing under regime-switching with jumps"](https://www.sciencedirect.com/science/article/pii/S0377042723004284)
+This repository contains the corresponding codes for the numerical experiments in the paper ["Error analysis of finite difference scheme for American option pricing under regime-switching with jumps"](https://www.sciencedirect.com/science/article/pii/S0377042723004284).
